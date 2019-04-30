@@ -5,12 +5,12 @@ from django.utils import timezone
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.PROTECT)
-    title = models.CharField(max_length=255)
-    created_date= models.DateTimeField(
+    title = models.CharField("Titre", max_length=255)
+    created_date= models.DateTimeField("Date de création",
         default=timezone.now)
     published_date = models.DateTimeField(
         blank=True, null=True)
-    text = models.TextField()
+    text = models.TextField("Texte")
     
     def publish(self):
         self.published_date=timezone.now()
